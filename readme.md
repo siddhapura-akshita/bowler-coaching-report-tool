@@ -16,7 +16,7 @@
 
 ---
 
-> **TL;DR** — Point it at ball-by-ball T20 data and it tells you what *kind* of bowler someone is, whether he's being used in the right phase, how consistent his overs are, and whether he's getting better or worse over time. Then it writes the coaching report for you. 📋
+Point it at ball-by-ball T20 data and it tells you what *kind* of bowler someone is, whether he's being used in the right phase, how consistent his overs are, and whether he's getting better or worse over time. Then it writes the coaching report for you. 📋
 
 ---
 
@@ -39,10 +39,10 @@ A scorecard won't tell you. **This will.**
 flowchart LR
     A[all_t20_deliveries.xlsx<br/>~120 MB raw] -->|clean_t20_deliveries.py| B[t20_deliveries_clean<br/>.parquet / .csv]
     B --> C{app.py<br/>Streamlit}
-    C --> D[🫆 Fingerprint]
-    C --> E[🎭 Role ID]
+    C --> D[🫆 Performance Fingerprint]
+    C --> E[🎭 Role Identification]
     C --> F[🎯 Execution & Matchups]
-    C --> G[📈 Trajectory]
+    C --> G[📈 Development Trajectory]
     C --> H[📋 Coaching Report]
 ```
 
@@ -146,11 +146,11 @@ This isn't "plausible-looking" cricket math — the edge cases are handled so th
 
 ```
 🏏 Sports Analytics Tool/
-├── app.py                     # the whole Streamlit app (5 tabs, single file)
-├── clean_t20_deliveries.py    # raw .xlsx ➜ tidy parquet/csv
-├── requirements.txt           # streamlit · pandas · numpy · plotly · sklearn · scipy …
-├── all_t20_deliveries.xlsx    # raw ball-by-ball data (git-ignored, ~120 MB)
-└── Group Assessment Brief.pdf  # the spec this was built against
+├── app.py                          # the whole Streamlit app (5 tabs, single file)
+├── t20_deliveries_clean.parquet    # cleaned parquet
+├── requirements.txt                # streamlit · pandas · numpy · plotly · sklearn · scipy …
+
+
 ```
 
 **Stack:** Streamlit · pandas · NumPy · Plotly · scikit-learn (k-means) · SciPy · matplotlib (PDF export)
@@ -160,8 +160,6 @@ This isn't "plausible-looking" cricket math — the edge cases are handled so th
 ---
 
 <div align="center">
-
-### 🎓 Built for the Business Analytics group assessment at UCD Smurfit.
 
 *Filters live behind an "Apply" button, so nothing recomputes while you're still deciding. You're welcome.* 😌
 
