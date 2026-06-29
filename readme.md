@@ -124,8 +124,6 @@ This isn't "plausible-looking" cricket math — the edge cases are handled so th
 ├── app.py                          # the whole Streamlit app (5 tabs, single file)
 ├── t20_deliveries_clean.parquet    # cleaned parquet
 └──  requirements.txt                # streamlit · pandas · numpy · plotly · sklearn · scipy …
-
-
 ```
 
 **Stack:** Streamlit · pandas · NumPy · Plotly · scikit-learn (k-means) · SciPy · matplotlib (PDF export)
