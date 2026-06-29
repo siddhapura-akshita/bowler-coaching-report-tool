@@ -27,23 +27,8 @@ You've got a fast bowler. Is he a *Powerplay strike weapon*, a *Middle-overs str
 A scorecard won't tell you. **This will.**
 
 ```
-   raw 120 MB of deliveries  ──►  clean ball-by-ball table  ──►  five views  ──►  a coaching report
-        (messy, slow)              (tidy, fast, correct)         (interactive)      (download & hand over)
-```
-
----
-
-## 🗺️ How it all fits together
-
-```mermaid
-flowchart LR
-    A[all_t20_deliveries.xlsx<br/>~120 MB raw] -->|clean_t20_deliveries.py| B[t20_deliveries_clean<br/>.parquet / .csv]
-    B --> C{app.py<br/>Streamlit}
-    C --> D[🫆 Performance Fingerprint]
-    C --> E[🎭 Role Identification]
-    C --> F[🎯 Execution & Matchups]
-    C --> G[📈 Development Trajectory]
-    C --> H[📋 Coaching Report]
+   clean ball-by-ball table  ──►  five views  ──►  a coaching report
+   (tidy, fast, correct)         (interactive)      (download & hand over)
 ```
 
 ---
@@ -106,17 +91,7 @@ pip install -r requirements.txt
 </details>
 
 <details>
-<summary><b>2. Clean the raw data</b> (one-time, turns 120 MB of mess into a fast file)</summary>
-
-```bash
-python clean_t20_deliveries.py
-```
-
-This keeps only genuine T20s from 2020 onwards, de-duplicates re-ingested matches (keeping the latest copy), tidies dtypes, and writes `t20_deliveries_clean.parquet` (fast) with a `.csv` fallback.
-</details>
-
-<details>
-<summary><b>3. Bowl the first over</b> 🎳</summary>
+<summary><b>2. Bowl the first over</b> 🎳</summary>
 
 ```bash
 streamlit run app.py
@@ -148,7 +123,7 @@ This isn't "plausible-looking" cricket math — the edge cases are handled so th
 🏏 Sports Analytics Tool/
 ├── app.py                          # the whole Streamlit app (5 tabs, single file)
 ├── t20_deliveries_clean.parquet    # cleaned parquet
-├── requirements.txt                # streamlit · pandas · numpy · plotly · sklearn · scipy …
+└──  requirements.txt                # streamlit · pandas · numpy · plotly · sklearn · scipy …
 
 
 ```
