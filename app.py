@@ -946,7 +946,7 @@ def stable_bowler_selectbox(label: str, options: list[str], key: str) -> str | N
 # --------------------------------------------------------------------------- #
 st.set_page_config(page_title="Bowl Metrics", layout="wide")
 
-# Georgia everywhere. We override Streamlit's own font CSS variables *and* set
+# Georgia everywhere. We override Streamlit's own font CSS variables and set
 # the family on every element (universal selector), so tab labels, widget text,
 # tables and the body all use it regardless of Streamlit's internal class names.
 GEORGIA = "Georgia, 'Times New Roman', serif"
@@ -957,17 +957,20 @@ st.markdown(
         --font: {GEORGIA};
         --font-family: {GEORGIA};
     }}
-    html, body, .stApp, [data-testid="stAppViewContainer"],
-    [data-testid="stHeader"], [data-testid="stSidebar"],
-    .stApp * {{
+    /* Apply Georgia to text elements only — never use * so icon fonts survive */
+    html, body, .stApp,
+    [data-testid="stAppViewContainer"],
+    [data-testid="stHeader"],
+    [data-testid="stSidebar"],
+    p, h1, h2, h3, h4, h5, h6, li, a, td, th,
+    label, button, input, textarea, select,
+    .stMarkdown, [data-testid="stText"],
+    [data-testid="stMetricLabel"],
+    [data-testid="stMetricValue"],
+    [data-testid="stMetricDelta"],
+    [data-testid="stExpander"] summary p,
+    [data-testid="stWidgetLabel"] {{
         font-family: {GEORGIA} !important;
-    }}
-    /* keep icon fonts (Material Symbols) intact so glyphs don't break */
-    .material-icons, [class*="material-symbols"], [data-testid] svg {{
-        font-family: inherit;
-    }}
-    span[role="img"], .material-icons, .material-symbols-outlined {{
-        font-family: 'Material Symbols Outlined', 'Material Icons' !important;
     }}
     </style>
     """,
