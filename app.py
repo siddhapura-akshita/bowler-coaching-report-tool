@@ -2261,7 +2261,7 @@ def build_report_pdf(report: dict) -> bytes:
 
         info = pdf.infodict()
         info["Title"] = f"Coaching Report — {report['bowler']}"
-        info["Subject"] = "T20 bowler coaching report"
+        info["Subject"] = "Bowl Metric: T20 bowler coaching report"
 
     return buf.getvalue()
 
@@ -2379,7 +2379,7 @@ def render_report(sel_years, sel_countries, bowler, *, fp_min, role_min,
 # --------------------------------------------------------------------------- #
 # Shared sidebar filters + bowler selection (common to every tab)
 # --------------------------------------------------------------------------- #
-st.title("T20 Bowler Coaching Tool")
+st.title("Bowl Metric: T20 Bowler Coaching Tool")
 
 st.session_state.setdefault("flt_year", [])
 st.session_state.setdefault("flt_country", [])
